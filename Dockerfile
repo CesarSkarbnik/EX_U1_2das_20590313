@@ -1,11 +1,7 @@
-FROM python:3.11-slim
-
-WORKDIR /app
-
+FROM python:3.13.9-alpine3.22
+WORKDIR /app/
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
-
-COPY . .
-
-# Usamos el puerto 5000 que es el estándar de Flask
-CMD ["gunicorn", "-b", "0.0.0.0:5000", "app:app"]
+RUN pip install -r requirements.txt
+COPY  . .
+EXPOSE 5050
+CMD ["gunicorn", "-b", "0.0.0.0python app.py:5050", "app:app"]
