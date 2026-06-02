@@ -4,4 +4,4 @@ COPY requirements.txt .
 RUN pip install -r requirements.txt
 COPY  . .
 EXPOSE 5050
-CMD ["gunicorn", "-b", "0.0.0.0python app.py:5050", "app:app"]
+CMD ["gunicorn", "-b", "0.0.0.0:5050", "app:app"]
